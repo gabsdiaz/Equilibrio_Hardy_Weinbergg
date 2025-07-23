@@ -17,7 +17,7 @@ Se considera una población ideal sin migración, selección ni evolución, con 
 ## 📂 Contenido del repositorio
 
 - 📄 `Proyecto PMN ~ Trabajo escrito.pdf` — Documento escrito con el desarrollo teórico, matemático y biológico del estudio.  
-- 💻 `Codigo_Equilibrio_Hardy_Weinberg.py`— Código de simulación implementado para analizar el comportamiento de las frecuencias alélicas bajo las condiciones planteadas.  
+- 💻 `Codigo_Equilibrio_Hardy_Weinberg.ipynb`— Código de simulación implementado para analizar el comportamiento de las frecuencias alélicas bajo las condiciones planteadas.  
 - 📊 `Presentación ~ Impacto de mutación sobre el equilibrio de Hardy - Weinberg.pdf` — Presentación visual del proyecto para su exposición.  
 - 📚 `Ejercicios.pdf` — Ejercicios asociados a la temática del equilibrio genético, extraídos y resueltos a partir de un texto guía.
 
