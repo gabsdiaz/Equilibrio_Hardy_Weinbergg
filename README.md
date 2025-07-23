@@ -1,0 +1,1 @@
+# Equilibrio_Hardy_Weinbergg
