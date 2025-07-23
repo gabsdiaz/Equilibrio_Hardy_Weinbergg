@@ -1,0 +1,1322 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[utf8]{inputenc} % Para acentos y caracteres en español
+\usepackage{amsmath}        % Para mejores entornos matemáticos
+\usepackage{enumitem} 
+\usepackage{booktabs}
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        
+        % Escudo
+        \includegraphics[width=0.3\textwidth]{Escudo_de_la_Universidad_Nacional_de_Colombia_(2016).svg.png}
+        
+        \vspace{0.5cm}
+        
+        % Universidad
+        {\Large\textbf{Universidad Nacional de Colombia}}\\[1.5cm]
+        
+        % Título
+        {\Huge\textbf{Equilibrio de Hardy Weinberg ~ Ejercicios }}\\[2cm]
+    
+        
+        % Autores
+        {\large Andrés Felipe Mosquera, Gabriela Diaz y David Castro}\\[2cm]
+        
+        % Materia
+        {\large Programación y Metodos Numéricos}\\[1.5cm]
+        
+        % Fecha
+        {\large Julio 2025}
+        
+    \end{center}
+\end{titlepage}
+\section*{Ejercicio 1}
+
+Sea $E$ un subconjunto de un espacio muestral $S$. El conjunto $E'$ que consiste en todos los elementos de $S$ que no están en $E$ se llama el complemento de $E$.
+
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Usa las propiedades 2 y 3 para determinar $P(E')$ en términos de $P(E)$.}
+
+    Sabemos que:
+    \[
+    S = E \cup E', \qquad E \cap E' = \emptyset
+    \]
+    Por lo tanto:
+    \[
+    P(S) = P(E) + P(E') \quad \Rightarrow \quad P(E') = P(S) - P(E)
+    \]
+
+    Como $P(S) = 1$, entonces:
+    \[
+    \boxed{P(E') = 1 - P(E)}
+    \]
+
+    \item \textbf{Usa la regla anterior para calcular la probabilidad del evento $F$: lanzar un dado y obtener un número no divisible por 3.}
+
+    El espacio muestral es:
+    \[
+    S = \{1,2,3,4,5,6\}, \quad P(S) = 1
+    \]
+
+    El evento complementario $E$ es “número divisible por 3”:
+    \[
+    E = \{3,6\}, \quad P(E) = \frac{2}{6} = \frac{1}{3}
+    \]
+
+    Entonces:
+    \[
+    F = S \setminus E = \{1,2,4,5\}, \quad P(F) = 1 - \frac{1}{3} = \frac{2}{3} \approx 66.7\%
+    \]
+
+    \[
+    \boxed{P(\text{número no divisible por 3}) = \frac{2}{3} = 66.7\%}
+    \]
+\end{enumerate}
+
+\section*{Ejercicio 2}
+
+Una pareja decide tener cuatro hijos. Asuma que los sexos de los hijos son eventos independientes.
+
+\begin{enumerate}
+    \item[a)] ¿Cuál es la probabilidad de que todos los hijos sean niñas?
+
+    \item[b)] ¿Cuál es la probabilidad de que al menos uno de ellos sea niño? (Pista: use el complemento y el resultado anterior.)
+\end{enumerate}
+
+
+\textbf{a) Probabilidad de que todos sean niñas}
+
+La probabilidad de que un hijo sea niña es:
+
+\[
+P(\text{niña}) = 0.5
+\]
+
+Como los nacimientos son independientes, la probabilidad de tener 4 niñas es:
+
+\[
+P(\text{4 niñas}) = (0.5)^4 = \frac{1}{16} = 0.0625
+\]
+
+\textbf{b) Probabilidad de que al menos uno sea niño}
+
+Usamos la probabilidad del complemento (que ninguno sea niño, es decir, que sean todas niñas):
+
+\[
+P(\text{al menos un niño}) = 1 - P(\text{4 niñas})
+\]
+\[
+= 1 - \frac{1}{16} = \frac{15}{16} \approx 0.9375
+\]
+
+\textbf{Respuesta:} La probabilidad de que al menos uno sea niño es aproximadamente 93.75\%.
+
+\section*{Ejercicio 3}
+
+En el problema anterior, se asumió que la probabilidad de tener niño o niña era de 0.5. Sin embargo, según datos reales de distintos países, la probabilidad varía. Repitamos el ejercicio usando los siguientes datos (niños por cada 1000 niñas):
+
+\begin{enumerate}
+    \item[a)] \textbf{En Estados Unidos:} 1052 niños por 1000 niñas.
+
+    \textbf{Solución:} La proporción total es $1052 + 1000 = 2052$.\\
+    
+    \[
+        \Pr(\text{niño}) = \frac{1052}{2052} \approx 0.5126, \qquad
+        \Pr(\text{niña}) = \frac{1000}{2052} \approx 0.4874
+    \]
+    Entonces,
+    \[
+        \Pr(\text{4 niñas}) = (0.4874)^4 \approx 0.0565
+    \]
+
+    \item[b)] \textbf{En Grecia:} 1073 niños por 1000 niñas.
+
+    \textbf{Solución:} La proporción total es $1073 + 1000 = 2073$.\\
+    \[
+        \Pr(\text{niña}) = \frac{1000}{2073} \approx 0.4823
+    \]
+    Por lo tanto,
+    \[
+        \Pr(\text{4 niñas}) = (0.4823)^4 \approx 0.0541
+    \]
+
+    \item[c)] \textbf{En Chile:} 1043 niños por 1000 niñas.
+
+    \textbf{Solución:} La proporción total es $1043 + 1000 = 2043$.\\
+    \[
+        \Pr(\text{niña}) = \frac{1000}{2043} \approx 0.4896
+    \]
+    Así,
+    \[
+        \Pr(\text{4 niñas}) = (0.4896)^4 \approx 0.0573
+    \]
+\end{enumerate}
+
+\section*{Ejercicio 4}
+
+Un dado justo de seis caras se lanza dos veces.  
+Sean los siguientes eventos:
+\begin{itemize}
+    \item $A$: obtener un número par en el primer lanzamiento.
+    \item $B$: la suma de los dos lanzamientos es siete.
+    \item $C$: la suma de los dos lanzamientos es ocho.
+\end{itemize}
+
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Determina $P(A)$, $P(B)$ y $P(C)$.}
+
+    El espacio muestral tiene $6 \times 6 = 36$ posibles resultados.
+
+    \begin{itemize}
+        \item $A$: primeros lanzamientos posibles: $\{2, 4, 6\}$, cada uno con 6 combinaciones para el segundo lanzamiento $\Rightarrow 3 \times 6 = 18$ casos.
+        \[
+        P(A) = \frac{18}{36} = \frac{1}{2}
+        \]
+
+        \item $B$: combinaciones cuya suma es 7:
+        \[
+        (1,6),\ (2,5),\ (3,4),\ (4,3),\ (5,2),\ (6,1)
+        \Rightarrow 6\ \text{casos}
+        \]
+        \[
+        P(B) = \frac{6}{36} = \frac{1}{6}
+        \]
+
+        \item $C$: combinaciones cuya suma es 8:
+        \[
+        (2,6),\ (3,5),\ (4,4),\ (5,3),\ (6,2)
+        \Rightarrow 5\ \text{casos}
+        \]
+        \[
+        P(C) = \frac{5}{36}
+        \]
+    \end{itemize}
+
+    \item \textbf{Determina $P(A \cap B)$ y $P(A \cap C)$.}
+
+    \begin{itemize}
+        \item $A \cap B$: primer lanzamiento es par y la suma es 7.
+        \[
+        \text{Casos favorables: } (2,5),\ (4,3),\ (6,1)
+        \Rightarrow 3\ \text{casos}
+        \]
+        \[
+        P(A \cap B) = \frac{3}{36} = \frac{1}{12}
+        \]
+
+        \item $A \cap C$: primer lanzamiento es par y la suma es 8.
+        \[
+        \text{Casos favorables: } (2,6),\ (4,4),\ (6,2)
+        \Rightarrow 3\ \text{casos}
+        \]
+        \[
+        P(A \cap C) = \frac{3}{36} = \frac{1}{12}
+        \]
+    \end{itemize}
+
+    \item \textbf{¿Son independientes los eventos $A$ y $B$?}
+
+    Dos eventos $A$ y $B$ son independientes si:
+    \[
+    P(A \cap B) = P(A) \cdot P(B)
+    \]
+
+    Verificamos:
+    \[
+    P(A) \cdot P(B) = \frac{1}{2} \cdot \frac{1}{6} = \frac{1}{12}
+    \]
+    \[
+    P(A \cap B) = \frac{1}{12}
+    \]
+
+    Como los valores coinciden:  
+    \[
+    \boxed{A \text{ y } B \text{ son independientes.}}
+    \]
+
+    \item \textbf{¿Son independientes los eventos $A$ y $C$?}
+
+    Verificamos:
+    \[
+    P(A) \cdot P(C) = \frac{1}{2} \cdot \frac{5}{36} = \frac{5}{72}
+    \]
+    \[
+    P(A \cap C) = \frac{1}{12} = \frac{6}{72}
+    \]
+
+    Como $\frac{5}{72} \ne \frac{6}{72}$:
+    \[
+    \boxed{A \text{ y } C \text{ no son independientes.}}
+    \]
+\end{enumerate}
+
+\section*{Ejercicio 5}
+Se lanza dos veces una dado de seis caras. Sea A el evento "obtener un número par en el primer lanzamiento". Sea B el evento ``La suma de los lanzamientos es 7''. Sea C el evento ``La suma de los lanzamientos es 8''.
+\begin{enumerate}
+    \item[a)] Determina Pr(A), Pr(B), y Pr(C).
+    \item[b)] Determina Pr(\(A \cap B\)) y Pr(\(A \cap B\)).
+    \item[c)] Determina si los enevtos A y B son independientes.
+    \item[d)] Determina si los eventos A y C son independientes.
+\end{enumerate}
+
+\textbf{a) Determinar Pr(A), Pr(B), Pr(C)}
+
+Al lanzarse dos dados de seis caras, entonces:
+\[
+6\cdot 6 = 36 \quad\text{posibles resultados}
+\]
+En el evento A el primer lanzamiento pueden ser 2,4,6 y el segundo lanzamiento puede tomar cualquier valor del 1 al 6, entonces:
+\[
+\Pr(A)=\frac{3\cdot6}{36} = \frac{18}{36} = \frac{1}{2} 
+\]
+El evento B puede tomar estos valores (6,1), (5,2), (4,3), (3,4), (2,5) y (1,6), entonces:
+\[
+\Pr(B) = \frac{6}{36} = \frac{1}{6}
+\]
+El evento C puede tomar los valores (6,2), (5,3), (4,4), (3,5) y (2,6) entonces:
+\[
+\Pr(C) = \frac{5}{36}
+\]
+\textbf{b) Determinar Pr(\(A\cap B)\) y Pr(\(A\cap C)\)}
+Los posibles valores que puede tomar \(A\cap B\) son (2,5), (4,3) y (6,1), entonces:
+\[
+\Pr(A\cap B)= \frac{3}{36} = \frac{1}{12}
+\]
+Los posibles valores que puede tomar \(A\cap B\) son (6,2), (4,4) y (2,6).
+\[
+\Pr(A\cap B) = \frac{3}{36} = \frac{1}{12}
+\]
+\textbf{c) Determinar si A y B son independientes}
+Para determinar si A y B son eventos independientes hay que utilizar la regla dada en el texto de condicion de independencia.
+\[
+\Pr(A\cap B) = \Pr(A) \cdot \Pr(B)
+\]
+entonces:
+\[
+\Pr(A\cap B) = \Pr(A) \cdot \Pr(B) = \frac{1}{2}\cdot \frac{1}{6} = \frac{1}{12}
+\]
+Ya que el espacio muestral es igual al usar esta propiedad, entonces se dice que A y B son independientes.
+\textbf{d) determinar si A y C son independientes}
+Usando la formula anterior para determinar si A y C son independientes:
+\[
+\Pr(A\cap C) = \Pr(A) \cdot \Pr(C) = \frac{1}{2}\cdot \frac{5}{36} = \frac{5}{72}
+\]
+Ya que \(\frac{1}{12}\neq \frac{5}{72}\) entonces, no cumple la condicion de independencia.
+
+\section*{Ejercicio 6}
+
+Suponga que las dos plantas que cruzamos esta vez son de tipo $(Rr,\, tt)$ y $(rr,\, Tt)$.
+
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Dibuja el cuadro de Punnett para esta situación.}
+
+    Consideremos los alelos:
+    \begin{itemize}
+        \item $R$ = flor roja (dominante), $r$ = flor blanca (recesivo)
+        \item $T$ = tallo alto (dominante), $t$ = tallo corto (recesivo)
+    \end{itemize}
+
+    Las plantas son:
+    \begin{itemize}
+        \item Planta 1: $Rr\ tt$ (solo puede aportar $t$ para tallo)
+        \item Planta 2: $rr\ Tt$ (solo puede aportar $r$ para color)
+    \end{itemize}
+
+    Gametos posibles:
+    \begin{itemize}
+        \item Planta 1: $R\ t$, $r\ t$
+        \item Planta 2: $r\ T$, $r\ t$
+    \end{itemize}
+
+    El cuadro de Punnett es:
+
+    \begin{center}
+    \begin{tabular}{c|cc}
+         & $rT$ & $rt$ \\
+        \hline
+        $Rt$ & $RrTt$ & $Rrtt$ \\
+        $rt$ & $rrTt$ & $rrtt$ \\
+    \end{tabular}
+    \end{center}
+
+    \item \textbf{¿Cuál es la probabilidad de obtener un cruce con flores rojas?}
+
+    Las flores rojas requieren al menos un alelo $R$:
+    \begin{itemize}
+        \item $RrTt$ (flor roja)
+        \item $Rrtt$ (flor roja)
+        \item $rrTt$ (flor blanca)
+        \item $rrtt$ (flor blanca)
+    \end{itemize}
+
+    Hay 2 de 4 posibles combinaciones con flores rojas:
+    \[
+    P(\text{flor roja}) = \frac{2}{4} = 0.5 = 50\%
+    \]
+
+    \item \textbf{¿Cuál es la probabilidad de obtener un cruce con tallos cortos?}
+
+    Los tallos cortos requieren ser $tt$:
+    \begin{itemize}
+        \item $RrTt$ (Tt: tallo alto)
+        \item $Rrtt$ (tt: tallo corto)
+        \item $rrTt$ (Tt: tallo alto)
+        \item $rrtt$ (tt: tallo corto)
+    \end{itemize}
+
+    Hay 2 de 4 posibles combinaciones con tallos cortos:
+    \[
+    P(\text{tallo corto}) = \frac{2}{4} = 0.5 = 50\%
+    \]
+
+    \item \textbf{¿Cuál es la probabilidad de obtener un cruce con ambos tallos cortos y flores rojas?}
+
+    Buscamos la combinación que tenga al menos un $R$ y sea $tt$:
+    \begin{itemize}
+        \item $Rrtt$ (flor roja, tallo corto)
+    \end{itemize}
+
+    Solo $Rrtt$ cumple ambas condiciones:
+    \[
+    P(\text{flor roja y tallo corto}) = \frac{1}{4} = 0.25 = 25\%
+    \]
+
+    \item \textbf{¿Son eventos independientes ``flores rojas'' y ``tallos cortos''?}
+
+    Dos eventos $A$ y $B$ son independientes si $P(A \cap B) = P(A)P(B)$.
+
+    \[
+    P(\text{flor roja}) = 0.5 = 50\% ,\quad P(\text{tallo corto}) = 0.5 = 50\%
+    \]
+    \[
+    P(\text{flor roja y tallo corto}) = 0.25 = 25\%
+    \]
+    \[
+    P(\text{flor roja}) \cdot P(\text{tallo corto}) = 0.5 \times 0.5 = 0.25 = 25\%
+    \]
+    Como $0.25 = 0.25 = 25\%$ , \textbf{sí son independientes}.
+
+    \item \textbf{¿Cuál es la probabilidad de un cruce que tenga flores rojas o tallos cortos?}
+
+    Usamos la fórmula de la unión de dos eventos:
+    \[
+    P(A \cup B) = P(A) + P(B) - P(A \cap B)
+    \]
+    \[
+    P(\text{flor roja o tallo corto}) = 0.5 + 0.5 - 0.25 = 0.75  = 75\%
+    \]
+
+    \item \textbf{¿Es ``flores blancas en tallos altos'' el evento complementario de ``flores rojas en tallos cortos''?}
+
+    El evento ``flores rojas en tallos cortos'' es $R\_-\ tt$ (al menos un $R$, y $tt$). Su complemento es ``no flores rojas o no tallos cortos''.
+
+    Observando todas las combinaciones:
+    \begin{itemize}
+        \item $RrTt$ (roja, alto)
+        \item $Rrtt$ (roja, corto)
+        \item $rrTt$ (blanca, alto)
+        \item $rrtt$ (blanca, corto)
+    \end{itemize}
+
+    El evento ``flores blancas en tallos altos'' es solo $rrTt$. El complemento de ``flores rojas en tallos cortos'' incluye $RrTt$, $rrTt$, y $rrtt$ (todo menos $Rrtt$).
+
+    Por lo tanto, \textbf{no es el evento complementario}.
+
+\end{enumerate}
+\section*{Ejercicio 7}
+
+Supongamos que ambos cruzados son del tipo $(Rr,\ Tt)$.
+
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Dibuja el cuadro de Punnett para esta situación.}
+
+    Consideramos los gametos posibles de cada planta:  
+    \[
+    \text{Gametos: } RT,\ Rt,\ rT,\ rt \quad \text{(cada uno con probabilidad } \frac{1}{4})
+    \]
+
+    El cuadro de Punnett es:
+
+    \begin{center}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        & $RT\ \left(\frac{1}{4}\right)$ & $rT\ \left(\frac{1}{4}\right)$ & $Rt\ \left(\frac{1}{4}\right)$ & $rt\ \left(\frac{1}{4}\right)$ \\
+        \hline
+        $RT\ \left(\frac{1}{4}\right)$ & $RR,TT\ \left(\frac{1}{16}\right)$ & $Rr,TT\ \left(\frac{1}{16}\right)$ & $RR,Tt\ \left(\frac{1}{16}\right)$ & $Rr,Tt\ \left(\frac{1}{16}\right)$ \\
+        \hline
+        $rT\ \left(\frac{1}{4}\right)$ & $Rr,TT\ \left(\frac{1}{16}\right)$ & $rr,TT\ \left(\frac{1}{16}\right)$ & $Rr,Tt\ \left(\frac{1}{16}\right)$ & $rr,Tt\ \left(\frac{1}{16}\right)$ \\
+        \hline
+        $Rt\ \left(\frac{1}{4}\right)$ & $RR,Tt\ \left(\frac{1}{16}\right)$ & $Rr,Tt\ \left(\frac{1}{16}\right)$ & $RR,tt\ \left(\frac{1}{16}\right)$ & $Rr,tt\ \left(\frac{1}{16}\right)$ \\
+        \hline
+        $rt\ \left(\frac{1}{4}\right)$ & $Rr,Tt\ \left(\frac{1}{16}\right)$ & $rr,Tt\ \left(\frac{1}{16}\right)$ & $Rr,tt\ \left(\frac{1}{16}\right)$ & $rr,tt\ \left(\frac{1}{16}\right)$ \\
+        \hline
+    \end{tabular}
+    \end{center}
+
+    \item \textbf{¿Cuál es la probabilidad de obtener un cruce con flores rojas?}
+
+    Las flores rojas requieren al menos un alelo $R$:
+    \[
+    \text{Todos los genotipos con } RR \text{ o } Rr.
+    \]
+    Hay 12 de 16 combinaciones con flores rojas:
+    \[
+    P(\text{flor roja}) = \frac{12}{16} = \frac{3}{4} = 75\%
+    \]
+
+    \item \textbf{¿Cuál es la probabilidad de obtener un cruce con tallos cortos?}
+
+    Tallos cortos corresponden a $tt$.  
+    Hay 4 combinaciones con $tt$:
+    \[
+    P(\text{tallo corto}) = \frac{4}{16} = \frac{1}{4} = 25\%
+    \]
+
+    \item \textbf{¿Cuál es la probabilidad de obtener un cruce con tallos cortos y flores rojas?}
+
+    Necesitamos genotipos con al menos un $R$ y $tt$:
+    \[
+    \text{Son: } RR,tt;\ Rr,tt;\ Rr,tt \quad \Rightarrow\ 3 \text{ casos}
+    \]
+    \[
+    P(\text{roja y corta}) = \frac{3}{16} = 18.75\%
+    \]
+
+    \item \textbf{¿Son eventos independientes ``flores rojas'' y ``tallos cortos''?}
+
+    Verificamos:
+    \[
+    P(\text{flor roja}) = \frac{3}{4}, \quad P(\text{tallo corto}) = \frac{1}{4}
+    \]
+    \[
+    P(\text{roja y corta}) = \frac{3}{16}
+    \]
+    \[
+    P(\text{flor roja}) \cdot P(\text{tallo corto}) = \frac{3}{4} \cdot \frac{1}{4} = \frac{3}{16}
+    \]
+
+    Como $P(A \cap B) = P(A) \cdot P(B)$:  
+    \[
+    \boxed{\text{Sí, son eventos independientes.}}
+    \]
+\end{enumerate}
+
+\section*{Ejercicio 8}
+El monje austriaco Gregor Mendel realizó un trabajo pionero en el campo de la herencia genetica. Su investigación con guisantes fue de especial importancia. Estudió varias características en estas plantas, entre las que se encontraban:
+\begin{itemize}
+    \item \textbf{Forma de la semilla:} redonda (R) (dominante) o rugosa (r);
+    \item \textbf{Color de la semilla:} amarillo (Y) (dominante) o verde (y);
+    \item \textbf{Altura de la planta:} alta (T) (dominante) o baja (t).
+\end{itemize}
+Supongamos que se cruzan un (Rr, yy, Tt) con un (rr, Yy, Tt).
+\begin{enumerate}
+    \item[a)] ¿Cuales son las posibles combinaciones de los alelos para cada planta?
+    \item[b)]Dibuja un cuadro de Punnet para los cruces de estas dos plantas.
+    \item[c)] ¿Son los eventos ``semillas rugosas'' y ``semillas verdes'' independientes?
+    \item[d)] ¿Son los eventos ``semillas rugosas'' y ``tallos bajos'' independientes?
+    \item[d)] ¿Son los eventos ``semillas redondas'' y ``tallos altos'' independientes?
+\end{enumerate}
+
+\textbf{a) Posibles combinaciones}
+Para el padre 1 (Rr, yy, Tt) las posibles combinaciones de alelos son (RyT), (Ryt), (ryT), (ryt). \\
+
+
+Para el padre 2 (rr, Yy, Tt) las posibles combinaciones de alelos son (rYT), (rYt), (ryT), (ryt).
+
+\textbf{b) Cuadro de Punnet}
+\begin{center}
+\scalebox{1.2}{
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ & rYT & rYt & ryT & ryt \\ \hline
+RyT & Rr, Yy, TT & Rr, Yy, Tt & Rr, yy, TT & Rr, yy, Tt \\ \hline
+Ryt & Rr, Yy, Tt & Rr, Yy, tt & Rr, yy, Tt & Rr, yy, tt \\ \hline
+ryT & rr, Yy, TT & rr, Yy, Tt & rr, yy, TT & rr, yy, Tt \\ \hline
+ryt & rr, Yy, Tt & rr, Yy, tt & rr, yy, Tt & rr, yy, tt \\ \hline
+\end{tabular}
+}
+\end{center}
+\textbf{c) Independencia en (rr) y (yy)}
+La independencia de eventos se da si la probabilidad de que ocurran juntos es igual al producto de sus probabilidades individuales. \\
+
+
+Observando el cuadro de Punnet se puede determinar que la probabilidad de que sean (rr) es de \(\frac{1}{2}\); la probabilidad de que sean (yy) es de \(\frac{1}{2}\) y la probabilidad de que ocurran juntos es de \(\frac{1}{4}\), entonces:
+\[
+\Pr(r \cap y) = \Pr(r) \cdot \Pr(y)
+\]
+\[
+\Pr(r \cap y) = \frac{1}{2}  \cdot \frac{1}{2} = \frac{1}{4}
+\]
+Ya que cumple la condicion, se puede concluir que los eventos son independientes.
+\textbf{d) Independencia en (rr) y (tt)}
+Basado en el cuadro de Punnet la probabilidad de que los alelos sean (rr) es de \(\frac{1}{2}\), la probabilidad de que los alelos sean es de \(\frac{1}{4}\) y la probabilidad de que ocurran juntos es de \(\frac{1}{8}\):
+\[
+\Pr(r \cap t) = \Pr(r) \cdot \Pr(t)
+\]
+\[
+\Pr(r \cap t) = \frac{1}{2} \cdot \frac{1}{8} = \frac{1}{8}
+\]
+Cumple la condicion, entonces los eventos son independientes.
+\textbf{e) Independencia en (RR, Rr) y (TT, Tt)}
+Las semillas redondas y los tallos altos son alelos dominantes entonces los homocigotos dominantes y los heterocigotos representaran los eventos.
+
+
+No hay alelos (RR) pero la probabilidad de la decendencia sea (Rr) es de \(\frac{1}{2}\), la probabilidad de que la decendencia sea (TT) o (Tt) es de \(\frac{3}{4}\) y la probabilidad de que ocurran juntos es de \(\frac{3}{8}\):
+\[
+\Pr(R \cap T) = \Pr(R) \cdot \Pr(T)
+\]
+\[
+\Pr(R\cap T) = \frac{1}{2} \cdot \frac{3}{4} = \frac{3}{8}
+\]
+Cumplen con la condicion, entonces los eventos son independientes.
+\section*{Ejercicio 9}
+
+Los grupos sanguíneos M-N son rasgos simples y fácilmente diferenciables en humanos. La \textbf{Tabla 5} muestra datos recolectados de una población de 208 beduinos en el desierto sirio:
+
+\begin{center}
+\begin{tabular}{lccc}
+\hline
+Genotipo & $MM$ & $MN$ & $NN$ \\
+\hline
+Número   & 119  & 76   & 13   \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{¿Cuáles son las frecuencias genotípicas para los tipos sanguíneos $MM$, $MN$ y $NN$ en esta población?}
+
+    El tamaño total de la muestra es $n = 208$.
+
+    Las frecuencias genotípicas se calculan como:
+    \[
+    f(MM) = \frac{119}{208} \approx 0.572
+    \]
+    \[
+    f(MN) = \frac{76}{208} \approx 0.365
+    \]
+    \[
+    f(NN) = \frac{13}{208} \approx 0.063
+    \]
+
+    \item \textbf{¿Cuál es la frecuencia del alelo $M$ y del alelo $N$ en esta población?}
+
+    La frecuencia de cada alelo se calcula como:
+    \[
+    f(M) = \frac{2 \times \text{número de } MM + \text{número de } MN}{2 \times n}
+    \]
+    \[
+    f(N) = \frac{2 \times \text{número de } NN + \text{número de } MN}{2 \times n}
+    \]
+
+    Sustituyendo los valores:
+    \[
+    f(M) = \frac{2 \times 119 + 76}{2 \times 208} = \frac{238 + 76}{416} = \frac{314}{416} \approx 0.755
+    \]
+    \[
+    f(N) = \frac{2 \times 13 + 76}{2 \times 208} = \frac{26 + 76}{416} = \frac{102}{416} \approx 0.245
+    \]
+\end{enumerate}
+\section*{Ejercicio 10}
+
+En el ejemplo que acabamos de analizar, las frecuencias alélicas no cambiaron de una generación a otra.  
+¿Se aplica esto también a las frecuencias genotípicas?
+
+Compare las columnas correspondientes de las \textbf{Tablas 4 y 7}.
+
+\bigskip
+
+No, las frecuencias genotípicas no se mantuvieron constantes de una generación a otra. Aunque las frecuencias alélicas (B = 0.60 y b = 0.40) permanecieron estables, las frecuencias genotípicas cambiaron. En la primera generación (Tabla 4), la población tenía una mayor proporción de heterocigotos (BB = 0.30, Bb = 0.60, bb = 10. ), en la siguiente generación (Tabla 7), las proporciones cambiaron siendo (BB = 36, Bb = 48, bb = 16.)\\
+
+\bigskip
+
+
+\[\boxed{\text{No, las frecuencias genotípicas (no) se mantuvieron constantes entre generaciones.}}\]
+
+
+
+\section*{Ejercicio 11}
+
+En una población la frecuencia del albinismo (genotipo recesivo \(aa\)) es  
+
+\[
+q^{2} = 0.000016.
+\]
+
+\begin{enumerate}
+\item[\textbf{a)}] \textbf{Frecuencias alélicas}
+
+\[
+q = \sqrt{0.000016}=0.004, 
+\qquad 
+p = 1-q = 0.996.
+\]
+
+\item[\textbf{b)}] \textbf{Frecuencias genotípicas bajo equilibrio H–W}
+
+\[
+\begin{array}{lcl}
+\text{AA (homocigoto dominante)} &:& p^{2}       = 0.996^{2}=0.992016 \;(99.20\%) \\[2pt]
+\text{Aa (heterocigoto)}         &:& 2pq         = 2(0.996)(0.004)=0.007968 \;(0.80\%) \\[2pt]
+\text{aa (albino)}               &:& q^{2}       = 0.000016 \;(0.0016\%)
+\end{array}
+\]
+
+\[
+\boxed{\,p = 0.996,\; q = 0.004\,}
+\qquad\text{y}\qquad
+\boxed{\,f(\text{AA}) = 0.9920,\; f(\text{Aa}) = 0.0080,\; f(\text{aa}) = 0.000016\,}.
+\]
+\end{enumerate}
+
+\section*{Ejercicio 12}
+
+¿Cuál de las siguientes poblaciones está en equilibrio genotípico?
+
+\begin{itemize}
+    \item[a)] $AA$: 0.16,\quad $Aa$: 0.48,\quad $aa$: 0.36
+    \item[b)] $AA$: 0.50,\quad $Aa$: 0.25,\quad $aa$: 0.25
+    \item[c)] Todos $Aa$
+    \item[d)] Todos $aa$
+\end{itemize}
+
+Para que una población esté en equilibrio de Hardy-Weinberg, las frecuencias genotípicas deben cumplir:
+\[
+p^2 = f(AA), \quad 2pq = f(Aa), \quad q^2 = f(aa)
+\]
+donde $p$ y $q$ son las frecuencias alélicas de $A$ y $a$ respectivamente, y $p + q = 1$.
+
+\textbf{Analicemos cada caso:}
+
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{a) $AA$: 0.16, $Aa$: 0.48, $aa$: 0.36}
+
+    Calculamos $p$ y $q$:
+    \[
+    f(AA) = p^2 = 0.16 \implies p = \sqrt{0.16} = 0.4
+    \]
+    \[
+    f(aa) = q^2 = 0.36 \implies q = \sqrt{0.36} = 0.6
+    \]
+    \[
+    2pq = 2 \times 0.4 \times 0.6 = 0.48
+    \]
+    Coincide con la frecuencia dada de $Aa$. \textbf{Esta población está en equilibrio.}
+
+    \item \textbf{b) $AA$: 0.50, $Aa$: 0.25, $aa$: 0.25}
+
+    Calculamos $p$ y $q$:
+    \[
+    f(AA) = p^2 = 0.50 \implies p = \sqrt{0.50} \approx 0.707
+    \]
+    \[
+    f(aa) = q^2 = 0.25 \implies q = \sqrt{0.25} = 0.5
+    \]
+    \[
+    2pq = 2 \times 0.707 \times 0.5 \approx 0.707
+    \]
+    Pero la frecuencia observada de $Aa$ es 0.25, que no coincide con 0.707. \textbf{No está en equilibrio.}
+
+    \item \textbf{c) Todos $Aa$}
+
+    Todas las frecuencias salvo $Aa$ son cero, lo que no es posible bajo Hardy-Weinberg, salvo en condiciones extremas (frecuencia alélica de 0.5, pero entonces $AA$ y $aa$ tendrían que ser 0.25 cada una). \textbf{No está en equilibrio.}
+
+    \item \textbf{d) Todos $aa$}
+
+    Solo hay homocigotos recesivos, es decir, $q^2 = 1 \implies q = 1$, $p = 0$. Así, $AA$ y $Aa$ serían 0, lo cual es un caso extremo, pero sí cumple la ecuación de Hardy-Weinberg para $q = 1$. Sin embargo, normalmente solo se considera equilibrio cuando ambas variantes alélicas están presentes en la población.
+
+    \textbf{Conclusión:} \textbf{Solo la opción a) está en equilibrio genotípico Hardy-Weinberg.}
+\end{enumerate}
+\section{Ejercicio 13}
+Supuestamente hay un alelo recesivo para la incapacidad de enrollar la lengua a lo largo. (¿Puedes hacerlo?) Una estimación para la frecuencia de este alelo es q = 0.6 Suponiendo que la población está en equilibrio de Hardy-Weinberg, ¿cuáles son las frecuencias relativas de aquellos que pueden enrollar sus lenguas y aquellos que no pueden?\\
+AA(Pueden enrollar), Aa(Pueden enrollar), aa(No ueden enrollar)\\
+\[q=0.6\]
+\[AA = p^{2}, \qquad Aa =2pq \qquad aa= q^{2} \]
+
+Como \[p + q = 1 \Longrightarrow p=1-q \Longrightarrow p=1-0.6=0.4\]
+\[p = 0.4\]
+
+\textbf{frecuencias genotípicas}  
+\[p^{2}=0.4^{2}=0.16 \qquad 2pq=2(0.4)(0.6)=0.48 \qquad q^{2}=0.6^{2}=0.36\]
+
+\textbf{pueden enrollar su lengua (AA+Aa)}  
+\[p^{2}+ 2pq=0.16+0.48 = 0.64\]
+
+\textbf{No pueden enrollar su lengua (aa)}  
+\[q^{2}=0.36\]
+
+Entonces se obtiene que la frecuencia de aquellos que pueden enrollar su lengua es de 0.64 y de aquellos que no pueden, de 0.36.\\
+
+\section*{Ejercicio 14}
+
+Sea una población en equilibrio Hardy–Weinberg con las siguientes frecuencias genotípicas relativas
+
+\[
+f(\text{AA}) = x, 
+\qquad 
+f(\text{Aa}) = 1 - 2x, 
+\qquad 
+f(\text{aa}) = x.
+\]
+
+Denotemos \(p = f(A)\) y \(q = f(a)\) (\(p+q=1\)).  
+En equilibrio se cumplen las igualdades de Hardy–Weinberg:
+
+\[
+p^{2} = x, 
+\qquad 
+2pq = 1 - 2x, 
+\qquad 
+q^{2} = x.
+\]
+
+\textbf{1. Implicaciones de \(p^{2} = q^{2}\).}  
+Como \(p, q \ge 0\), de \(p^{2}=q^{2}\) se deduce \(p=q\).
+
+\[
+p = q.
+\]
+
+\textbf{2. Condición \(p+q = 1\).}  
+Si \(p=q\), entonces
+
+\[
+p+q = 2p = 1 
+\;\Longrightarrow\;
+p = q = \frac{1}{2}.
+\]
+
+\textbf{3. Valor de \(x\).}  
+
+\[
+x = p^{2} = \left(\frac12\right)^{2} = \frac14 = 0.25.
+\]
+
+\textbf{4. Verificación con el heterocigoto.}  
+
+\[
+2pq = 2\!\left(\frac12\right)\!\left(\frac12\right) = 0.50 
+= 1 - 2x
+= 1 - 2\!\left(\frac14\right) ,
+\]
+
+lo cual confirma la consistencia.
+
+\bigskip
+\[
+\boxed{\,x = 0.25,\quad p = 0.50,\quad q = 0.50\,}.
+\]
+
+No existen otros valores de \(x\) que satisfagan simultáneamente los tres requisitos (frecuencias no negativas y sumando 1) bajo el equilibrio Hardy–Weinberg.
+
+
+\section*{Ejercicio 15}
+
+La siguiente tabla muestra las frecuencias genotípicas de los tipos sanguíneos \(M\) y \(N\) en distintas poblaciones humanas.  
+Se requiere:
+
+\begin{enumerate}
+  \item Calcular las frecuencias alélicas \(p=f(M)\) y \(q=f(N)\).
+  \item Verificar si cada población está en equilibrio de Hardy–Weinberg (H–W).
+\end{enumerate}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Frecuencias genotípicas \(M\!-\!N\) en varias poblaciones humanas \cite{Boyd1950}}
+  \label{tab:MN_frec}
+  \begin{tabular}{% genotipos, alelos}
+    l
+    S[table-format=1.3] S[table-format=1.3] S[table-format=1.3] % genotipos
+    S[table-format=1.3] S[table-format=1.3]                     % alelos 
+  }  
+    \toprule
+    \textbf{Población} & {$MM$} & {$MN$} & {$NN$} & {$p \;(M)$} & {$q \;(N)$} \\
+    \midrule
+    Eskimo                & 0.835 & 0.156 & 0.009 & 0.913 & 0.087 \\
+    Australian Aborigine  & 0.024 & 0.304 & 0.672 & 0.176 & 0.824 \\
+    Egyptian              & 0.278 & 0.489 & 0.233 & 0.523 & 0.477 \\
+    German                & 0.297 & 0.507 & 0.196 & 0.551 & 0.449 \\
+    Chinese               & 0.332 & 0.486 & 0.182 & 0.575 & 0.425 \\
+    Nigerian              & 0.301 & 0.495 & 0.204 & 0.548 & 0.452 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vspace{1em}
+\noindent
+\textbf{Cálculo de frecuencias alélicas}.  
+Para cada población:
+
+\[
+p = f(M) = f(MM) + \tfrac12 f(MN), 
+\qquad
+q = f(N) = f(NN) + \tfrac12 f(MN),
+\qquad
+p+q=1.
+\]
+
+\textbf{Comprobación de Hardy–Weinberg}.  
+Se comparan las frecuencias observadas con las esperadas
+\[
+f(MM)_{\text{esp}} = p^{2}, \quad
+f(MN)_{\text{esp}} = 2pq, \quad
+f(NN)_{\text{esp}} = q^{2},
+\]
+empleando, por ejemplo, una prueba \(\chi^{2}\) (1 grado de libertad) o una tolerancia de \(\pm 0.01\).  
+Los resultados se resumen a continuación:
+
+\begin{itemize}
+  \item \textbf{Eskimo}: \(\chi^{2} \approx 0.00 \Rightarrow\) en equilibrio.
+  \item \textbf{Australian Aborigine}: \(\chi^{2} \approx 0.002 \Rightarrow\) ligera desviación; posible ruptura H–W.
+  \item \textbf{Egyptian}: \(\chi^{2}\approx 0.00 \Rightarrow\) en equilibrio.
+  \item \textbf{German}: \(\chi^{2}\approx 0.001 \Rightarrow\) ligera desviación; posible ruptura H–W.
+  \item \textbf{Chinese y Nigerian}: \(\chi^{2}\approx 0.00 \Rightarrow\) en equilibrio.
+\end{itemize}
+\section{Ejercicio 16}
+La concha del caracol de tierra Cepaea nemoralis puede ser rosa o amarilla, dependiendo de dos alelos en un solo locus. Rosa (P) es dominante, amarillo (p) es recesivo. Suponiendo que las poblaciones de caracoles en la Tabla 13 están en equilibrio, encuentra la frecuencia de los alelos P y p. ¿Qué proporción de cada población se esperaría que fuera heterocigota?
+Color rosa = PP o Pp, Color amarillo = pp
+\[PP = p^{2}, \qquad Pp = 2pq  \qquad pp = q^{2}\]
+\textbf{Cálculo de frecuencias alélicas y proporción de heterocigotos por población (Hardy-Weinberg)}\\
+Dado que el color amarillo es recesivo (\textit{pp}), la frecuencia observada de individuos amarillos en cada población corresponde a \( q^2 \). A partir de esta, se calcula la frecuencia del alelo recesivo \( q \), luego la del alelo dominante \( p = 1 - q \), y finalmente la proporción de heterocigotos (\textit{Pp}) como \( 2pq \).
+
+\textbf{Guyancourt}
+\[q^2 = 0.480 \Longrightarrow q = \sqrt{0.480} \approx 0.6928\]
+\[p = 1 - q = 1 - 0.6928 = 0.3072\]
+\[2pq = 2(0.3072)(0.6928) \approx 0.4254\]
+2pq(Heterocigotos) = 0.4254
+\textbf{Lonchez}
+\[q^2 = 0.341\Longrightarrow q = \sqrt{0.341} \approx 0.5840\]
+\[p = 1 - q = 1 - 0.5840 = 0.4160\]
+\[2pq = 2(0.4160)(0.5840) \approx 0.4857\]
+2pq(Heterocigotos) = 0.4857
+\textbf{Peyresourde}
+\[q^2 = 0.837 \Longrightarrow q = \sqrt{0.837} \approx 0.9150\]
+\[p = 1 - q = 1 - 0.9150 = 0.0850\]
+\[2pq = 2(0.0850)(0.9150) \approx 0.1557\]
+2pq(Heterocigotos) = 0.1557
+
+
+\section*{Ejercicio 17}
+La fibrosis quística es una enfermedad grave causada por la homocigosidad de una alelo recesivo. La frecuencia con la que los recién nacidos presenta esta enfermedad es de aproximadamente cuatro en diez mil. Sea c el alelo resesivo anormal y C el alelo dominante. Determina las frecuencias alélicas de c y C, y luego determina las frecuencias de los genotipos CC y Cc si la poblacion esta en equilibrio. ¿Es razonable asumir apareamiento aleatorio en este caso?
+
+El ejercicio nos dice que la frecuencia con la que se presenta este alelo recesivo anormal es de:
+\[
+cc = q^2 =\frac{4}{10000} = 0,0004
+\]
+Entonces la frecuencia de c es:
+\[
+q = \sqrt{0,0004} = 0,02
+\]
+Ya que conocemos la frecuencia de q, ademas sabemos que la suma de las frecuencias (p, q) debe ser igual a 1:
+\[
+p = 1 - q
+\]
+\[
+p = 1 - 0,02 = 0,98
+\]
+La frecuencia del genotipo CC se conoce a traves de la frecuencia de p:
+\[
+CC = p^2
+\]
+\[
+CC = (0.98)^2 = 0.9604
+\]
+Finalmente la frecuencia del genotipo Cc es igual a:
+\[
+Cc = 2pq
+\]
+\[
+Cc = 2(0.98)(0.02) = 0.0392
+\]
+En este caso asumir que la población tiene apareamiento aleatorio no es razonable ya que el genotipo cc anormal genera una enfermedad grave la cual hace que mueran pronto los individuos de la población, esto afectaria la probabilidad de reproducción de individuos portadores o afectados.
+
+
+\section*{Ejercicio 18}
+
+Usando los datos de la \textbf{Tabla 17} y asumiendo equilibrio de Hardy-Weinberg, se buscan las frecuencias alélicas de los alelos $A$, $B$ y $O$ en la población \textbf{Navajo}, donde:
+
+\begin{itemize}
+    \item Frecuencia del grupo A: 0.225
+    \item Frecuencia del grupo B: 0.000
+    \item Frecuencia del grupo AB: 0.000
+    \item Frecuencia del grupo O: 0.775
+\end{itemize}
+
+\textbf{Sistema ABO:} Las frecuencias genotípicas están dadas por:
+\[
+\begin{aligned}
+f(O) &= r^2 \\
+f(A) &= p^2 + 2pr \\
+f(B) &= q^2 + 2qr \\
+f(AB) &= 2pq
+\end{aligned}
+\]
+
+\textbf{Paso 1: Calcular $r$ a partir de $f(O)$:}
+\[
+r^2 = 0.775 \Rightarrow r = \sqrt{0.775} \approx 0.8804
+\]
+
+\textbf{Paso 2: Asumir $q = 0$} (ya que no hay individuos con grupo B ni AB).
+
+\textbf{Paso 3: Calcular $p$ a partir de $f(A) = p^2 + 2pr$:}
+\[
+0.225 = p^2 + 2p(0.8804) = p^2 + 1.7608p
+\]
+
+Resolviendo la ecuación cuadrática:
+\[
+p \approx 0.1206
+\]
+
+\textbf{Paso 4: Verificación:}
+\[
+q = 1 - p - r = 1 - 0.1206 - 0.8804 = 0
+\]
+
+\textbf{Resultado final:}
+\[
+\boxed{p = 0.1206, \quad q = 0, \quad r = 0.8804}
+\]
+
+\textbf{Frecuencias alélicas de la población Navajo:}
+
+\begin{itemize}
+    \item Alelo $I^A$ (A) ($p$): 0.1206
+    \item Alelo $I^B$ (B) ($q$): 0
+    \item Alelo $i$ (O)($r$): 0.8804
+\end{itemize}
+
+\section{Ejercicio 19}
+a) Usando los datos en la Tabla 17 y la suposición de equilibrio, primero encuentra la frecuencia alélica de O, luego A, y finalmente B en la población esquimal.\\
+b) Esta vez, encuentra la frecuencia de O, luego B, y finalmente A en la población esquimal. ¿Obtienes el mismo resultado?\\
+c) Después de haber encontrado r y luego p en la parte (a), ¿qué valor obtendrías para q si usas el hecho de que en equilibrio el genotipo AB debería aparecer con frecuencia relativa Zpq? ¿Cómo se compara esto con tus dos estimaciones anteriores?\\
+
+A partir de los datos de la Tabla 17, se analizará la población esquimal bajo el supuesto de equilibrio de Hardy-Weinberg. Las frecuencias observadas de los grupos sanguíneos son:
+
+\begin{itemize}
+  \item Grupo A: \( f(A) = 0.538 \)
+  \item Grupo B: \( f(B) = 0.035 \)
+  \item Grupo AB: \( f(AB) = 0.014 \)
+  \item Grupo O: \( f(O) = 0.411 \)
+\end{itemize}
+
+\textbf{a) Cálculo de las frecuencias alélicas \( r, p, q \)}\\
+
+Sabemos que el grupo O se asocia al genotipo homocigoto recesivo \( oo \), por lo que:
+
+\[r^2 = f(O) = 0.411 \Rightarrow r = \sqrt{0.411} \approx 0.641\]
+El grupo A incluye los genotipos \( I^A I^A \) y \( I^A i \), es decir:
+\[f(A) = p^2 + 2pr = 0.538\]
+Sustituyendo \( r = 0.641 \), se obtiene:
+\[p^2 + 2(0.641)p = 0.538 \Rightarrow p^2 + 1.282p - 0.538 = 0\]
+Resolviendo esta ecuación cuadrática:
+\[p = \frac{-1.282 \pm \sqrt{(1.282)^2 + 4(0.538)}}{2} = \frac{-1.282 \pm \sqrt{3.320}}{2}\]
+\[p \approx \frac{-1.282 + 1.822}{2} \approx 0.270 \quad \text{(valor biológicamente válido)}\]
+Finalmente, se deduce \( q \) como:
+\[
+q = 1 - p - r = 1 - 0.270 - 0.641 = 0.089\]
+\vspace{0.5em}
+\textbf{Resumen:}
+\[
+p = f(I^A) \approx 0.270, \quad q = f(I^B) \approx 0.089, \quad r = f(i) \approx 0.641\]
+\textbf{b) Confirmación usando la frecuencia del grupo A}
+Se parte nuevamente de:
+\[f(A) = p^2 + 2pr = 0.538\]
+Ya que \( r = \sqrt{0.411} \approx 0.641 \), resolvemos la misma ecuación cuadrática que en el inciso anterior, obteniendo nuevamente:
+\[p \approx 0.270, \quad q = 1 - p - r = 0.089\]
+\textbf{Conclusión:} Se obtiene el mismo resultado, confirmando la consistencia del modelo bajo equilibrio.
+\textbf{c) Verificación con el valor teórico de \( f(AB) = 2pq \)}
+El genotipo AB se corresponde con:
+\[f(AB) = 2pq = 2(0.270)(0.089) \approx 0.048\]
+Comparando con el valor observado:
+\[f(AB)_{\text{observado}} = 0.014\]
+
+\textbf{Conclusión:} El valor observado de \( f(AB) \) es considerablemente menor al esperado bajo equilibrio Hardy-Weinberg. Esto podría indicar que la población esquimal no se encuentra en equilibrio para estos alelos, posiblemente debido a efectos de selección, migración, deriva genética o tamaño poblacional reducido.
+
+\section*{Ejercicio 20}
+¡No todos lo patrones de herencia son simples! Sin embargo, el complejo de alelos que rige el factor sanguíneo Rh parece operar de forma parecida a un solo par de alelos dominantes y recesivos. La genetica detrás de Rh(+) y Rh(-) es compleja. Al menos ocho alelos diferentes pueden causar que estén presentes las proteínas sanguíneas Rh(+). La sangre Rh(-) se presenta como una condicion recesiva homocigota. Varias encuestas indican que aproximadamente el 14,5\% de la poblacion general es Rh(-). Supón que la poblacion está en equilibrio de Hardy-Weinberg con respecto a este rasgo.
+\begin{enumerate}
+    \item[a)] Determina las frecuencias alélicas del complejo Rh(-) y del complejo Rh(+)
+    \item[b)] ¿Que porcentaje de la población será homocigoto dominante y que porcentaje será heterocigoto? (Ambos grupos presentarán las caracteristicas de la sangre Rh(+))
+    \item[c)] Responde las dos preguntas anteriores para los vascos, en los que aproximadamente el 43\% de la población tiene el tipo de sangre Rh(-) [Hartl 1985].
+\end{enumerate}
+
+\textbf*{a) Frecuencias alelicas Rh(-) y Rh(+)}
+Ya que el complejo Rh(-) es resecivo entonces la frecuencia de este es:
+\[
+q^2 = 0.145
+\]
+Entonces:
+\[
+q = \sqrt{0.145} \approx 0.380
+\]
+Y ahora la frecuencia de Rh(+) (p) sabiendo que la suma de q y p deben ser igual a 1:
+\[
+p=1-q
+\]
+\[
+p \approx 1 - 0.380 = 0.62
+\]
+
+\begin{itemize}
+    \item La frecuencia de Rh(+) es de \(p \approx 0.62\)
+    \item La Frecuencia de Rh(-) es de  \( q \approx 0.380\)
+\end{itemize}
+
+\textbf{b) porcentaje de homocigotos dominantes y heterocigotos}
+El porcentaje de homocigotos dominantes aplicando Hardy-Weinberg:
+\[
+p^2 = (0.62)^2 = 0.384 = 38.4\%
+\]
+
+
+El porcentaje de los heterocigotos será:
+\[
+2pq = 2(0.62)(0.380) = 0.471 = 47.1\%
+\]
+\textbf{c) Análisis para la población vasca}
+
+Se indica que aproximadamente el 43\% de la población vasca presenta sangre Rh(-), lo cual representa la frecuencia de homocigotos recesivos:
+
+\[
+q^2 = 0.43 \Rightarrow q = \sqrt{0.43} \approx 0.656
+\]
+\[
+p = 1 - q = 1 - 0.656 = 0.344
+\]
+
+Aplicando las proporciones de Hardy-Weinberg:
+
+\[
+p^2 = (0.344)^2 \approx 0.118
+\]
+\[
+2pq = 2(0.344)(0.656) \approx 0.451
+\]
+
+\begin{itemize}
+  \item Frecuencia del alelo recesivo Rh(-): \( q \approx 0.656 \)
+  \item Frecuencia del alelo dominante Rh(+): \( p \approx 0.344 \)
+  \item Proporción de homocigotos dominantes: \( \approx 11.8\% \)
+  \item Proporción de heterocigotos: \( \approx 45.1\% \)
+\end{itemize}
+
+
+\section*{Ejercicio 21}
+
+Supongamos que el genotipo homocigoto recesivo \(aa\) es estéril (\(\text{fitness}=0\)), mientras que los genotipos \(Aa\) y \(AA\) se reproducen normalmente (\(\text{fitness}=1\)).  
+La frecuencia inicial del alelo recesivo es
+
+\[
+q_0 = 0.05 .
+\]
+
+\begin{enumerate}
+\item[\textbf{a)}] \textbf{Frecuencia \(q_{10}\) después de 10 generaciones}
+
+Cuando sólo los homocigotos recesivos son eliminados, la actualización generacional del alelo \(a\) viene dada por  
+
+\[
+q_{n+1} = \frac{q_n}{1 + q_n}.
+\]
+
+Esta relación recurrente tiene solución cerrada  
+
+\[
+\boxed{\,q_n = \dfrac{q_0}{1 + n\,q_0}\,}.
+\]
+
+Calculando de \(n = 0\) a \(10\):
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Generación} & \(\boldsymbol{q_n}\) \\
+\hline
+0  & 0.050000 \\
+1  & 0.047619 \\
+2  & 0.045455 \\
+3  & 0.043478 \\
+4  & 0.041667 \\
+5  & 0.040000 \\
+6  & 0.038462 \\
+7  & 0.037037 \\
+8  & 0.035714 \\
+9  & 0.034483 \\
+10 & 0.033333 \\
+\hline
+\end{tabular}
+\end{center}
+
+\[
+\boxed{q_{10} \approx 0.0333}
+\]
+
+\item[\textbf{b)}] \textbf{Generaciones necesarias para que \(q\) se reduzca a la mitad}
+
+Queremos \(q_n = \dfrac{q_0}{2} = 0.025\).  
+Usando la expresión cerrada:
+
+\[
+\frac{q_0}{2} = \frac{q_0}{1 + n q_0}
+\;\;\Longrightarrow\;\;
+1 + n q_0 = 2
+\;\;\Longrightarrow\;\;
+n = \frac{1}{q_0} = 20.
+\]
+
+\[
+\boxed{n = 20 \text{ generaciones}}
+\]
+\end{enumerate}
+
+\textbf{Conclusión rápida}.  
+Bajo selección completa contra los homocigotos recesivos, la disminución de la frecuencia del alelo perjudicial es relativamente lenta: en 10 generaciones cae un tercio; para reducirse a la mitad se necesitan 20 generaciones porque el alelo sigue “escondido” en los heterocigotos \(Aa\).
+\section{Ejercicio 22}
+a) Suponga que los homocigotos recesivos se abstienen de reproducirse. Encuentre una fórmula (en términos de la frecuencia inicial $q_0$ del alelo recesivo) para el número de generaciones n que deben pasar antes de que la frecuencia del alelo recesivo se reduzca a la mitad.\\
+b) Si asumimos que se necesitan 30 años entre generaciones humanas, ¿cuántos años tomaría antes de que la frecuencia del alelo e para la fibrosis quística se reduzca a la mitad?\\
+
+A partir de la Tabla 19, se nos da la siguiente fórmula para la frecuencia del alelo recesivo \( c \) en la generación \( n \), bajo el supuesto de que los individuos homocigotos recesivos (\( cc \)) no se reproducen:
+\[q_n = \frac{q_0}{1 + n q_0}\]
+donde:
+\begin{itemize}
+    \item \( q_0 \) es la frecuencia inicial del alelo recesivo,
+    \item \( q_n \) es la frecuencia del alelo en la generación \( n \),
+    \item \( n \) es el número de generaciones transcurridas.
+\end{itemize}
+\textbf{a) Derivar una fórmula para \( n \) cuando \( q_n = \frac{q_0}{2} \)}
+
+Queremos encontrar el número de generaciones \( n \) necesarias para que la frecuencia del alelo recesivo se reduzca a la mitad. Es decir, sustituimos:
+\[\frac{q_0}{2} = \frac{q_0}{1 + n q_0}\]
+Eliminando \( q_0 \) de ambos lados (asumiendo \( q_0 \ne 0 \)):
+\[\frac{1}{2} = \frac{1}{1 + n q_0}\]
+Invirtiendo ambos lados:
+\[2 = 1 + n q_0\Rightarrow n q_0 = 1\Rightarrow \boxed{n = \frac{1}{q_0}}\]
+\textbf{b) Cálculo del tiempo en años}
+Si se asume que cada generación humana dura 30 años, entonces el número de años necesarios para reducir la frecuencia del alelo a la mitad es:
+\[\text{Años} = n \cdot 30 = \frac{30}{q_0}\]
+Sustituyendo \( q_0 = 0.02000 \):
+\[n = \frac{1}{0.02000} = 50
+\Rightarrow \text{Años} = 50 \cdot 30 = \boxed{1500\ \text{años}}\]
+\textbf{Conclusión}
+
+Bajo el supuesto de que los homocigotos recesivos no se reproducen, se requerirían 50 generaciones (o 1500 años) para que la frecuencia del alelo recesivo \( c \) se reduzca a la mitad.
+
+\section*{Ejercicio 23}
+El caso mas extremo de ventaja del heterocigoto ocurre cunado ninguno de los genotipos homocigotos pueden reproducirse. Completa la \textbf{Tabla 20} bajo estas suposiciones. (Puede que necesite revisar los datos de la \textbf{Tabla 18}. ¿La población alcanza un equilibrio? Si es así, descríbelo. 
+
+\begin{table}[h!]
+\centering
+\caption{El efecto de la no reproducción por parte de cualquier genotipo homocigoto.}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Población} & \textbf{AA} & \textbf{Aa} & \textbf{aa} & \textbf{A} & \textbf{a} \\
+\hline
+\textbf{Antes de reproducción} & \( p^2 \) & \( 2pq \) & \( q^2 \) & \( p \) & \( q \) \\
+\textbf{Después de reproducción} &  &  &  &  &  \\
+\hline
+\end{tabular}
+\end{table}
+
+El caso más extremo de ventaja del heterocigoto ocurre cuando \textbf{ningún genotipo homocigoto} puede reproducirse.  
+Bajo esta condición, solo los heterocigotos \( Aa \) generan descendencia.  
+Esto implica que en cada generación, la reproducción ocurre únicamente entre individuos \( Aa \times Aa \), lo que produce:
+
+\[
+Aa \times Aa \Rightarrow
+\begin{cases}
+25\% \; AA \\
+50\% \; Aa \\
+25\% \; aa
+\end{cases}
+\]
+
+Sin embargo, como solo los heterocigotos \( Aa \) pueden reproducirse, los homocigotos \( AA \) y \( aa \) son eliminados en cada generación.  
+Al repetir este proceso generación tras generación, la población converge a un equilibrio en el que:
+
+\[
+\text{Frecuencia de } Aa = 1 \quad ; \quad AA = aa = 0 \quad ; \quad p = q = 0.5
+\]
+
+\vspace{1em}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|ccc|cc}
+\multicolumn{6}{c}{\textbf{Frequency}} \\
+\hline
+\textbf{Population} & \textbf{AA} & \textbf{Aa} & \textbf{aa} & \textbf{A} & \textbf{a} \\
+\hline
+Before Reproduction & \( p^2 \) & \( 2pq \) & \( q^2 \) & \( p \) & \( q \) \\
+After Reproduction  & \( 0 \)   & \( 1 \)   & \( 0 \)   & \( 0.5 \) & \( 0.5 \) \\
+\hline
+\end{tabular}
+\end{table}
+La población \textbf{sí alcanza un equilibrio}, en el cual \textbf{todos los individuos son heterocigotos} \( Aa \), y las frecuencias alélicas de \( A \) y \( a \) se estabilizan en 0.5.  
+Este es un equilibrio estable bajo la condición de que solo los heterocigotos se reproduzcan.
+\end{document}
+
+\section*{Ejercicio 24}
+
+Tenemos un rebaño mixto con \(40\,\%\) de caballos (\(\text{HH}\)) y \(60\,\%\) de cebras (\(\text{ZZ}\)).  
+Los híbridos cebroides (\(\text{HZ}\)) son estériles. Supondremos apareamiento aleatorio en cada generación.
+
+\begin{enumerate}
+\item[\textbf{a)}] \textbf{Primera generación filial (F\(_1\)).}
+
+Sean \(p_0 = 0.40\) y \(q_0 = 0.60\) las frecuencias génicas iniciales.  
+Bajo Hardy–Weinberg:
+
+\[
+\begin{array}{lcl}
+\text{HH}: & p_0^{2}            & = 0.16 \;(16\%) \\
+\text{HZ}: & 2p_0 q_0           & = 0.48 \;(48\%) \\
+\text{ZZ}: & q_0^{2}            & = 0.36 \;(36\%)
+\end{array}
+\]
+
+\vspace{1ex}
+\item[\textbf{b)}] \textbf{Composición del acervo reproductor para F\(_2\).}
+
+Los cebroides (48 %) no se reproducen.  
+Renormalizando con los fértiles HH y ZZ:
+
+\[
+\text{Caballos (HH)} = \frac{0.16}{0.16 + 0.36} \approx 0.3077 \;(30.8\%), \qquad
+\text{Cebras (ZZ)}   = \frac{0.36}{0.16 + 0.36} \approx 0.6923 \;(69.2\%).
+\]
+
+\vspace{1ex}
+\item[\textbf{c)}] \textbf{Segunda generación filial (F\(_2\)).}
+
+Con \(p_1 = 0.3077\) y \(q_1 = 0.6923\):
+
+\[
+\begin{array}{lcl}
+\text{HH}: & p_1^{2}                  & \approx 0.095 \;(9.5\%)  \\
+\text{HZ}: & 2p_1 q_1                 & \approx 0.426 \;(42.6\%) \\
+\text{ZZ}: & q_1^{2}                  & \approx 0.479 \;(47.9\%)
+\end{array}
+\]
+
+\vspace{1ex}
+\item[\textbf{d)}] \textbf{Tendencia a largo plazo.}
+
+En cada generación aparecen muchos \(\text{HZ}\) pero se eliminan por esterilidad.  
+Las frecuencias alélicas de los fértiles evolucionan según
+
+\[
+p_{n+1} = \frac{p_n^{2}}{p_n^{2} + q_n^{2}}, \qquad
+q_{n+1} = \frac{q_n^{2}}{p_n^{2} + q_n^{2}}.
+\]
+
+El alelo inicialmente más abundante se favorece: como \(q_0 > p_0\), la frecuencia de cebra (\(q_n\)) aumenta y la de caballo (\(p_n\)) disminuye.  
+\textbf{Resultado esperado:} con el tiempo el rebaño tenderá a \(100\,\%\) cebras; los cebroides seguirán formándose cada generación, pero jamás dejarán descendencia, y los caballos acabarán desapareciendo.
+\end{enumerate}
+
+
+\end{document}
