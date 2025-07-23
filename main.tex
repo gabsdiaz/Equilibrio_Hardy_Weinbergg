@@ -1,0 +1,497 @@
+\documentclass[12pt]{article}
+
+% --------------------
+% PAQUETES BÁSICOS
+% --------------------
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{tocloft}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{inconsolata}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=single,
+    framesep=5pt,
+    rulecolor=\color{black},
+    literate=%
+        {á}{{\'a}}1
+        {é}{{\'e}}1
+        {í}{{\'i}}1
+        {ó}{{\'o}}1
+        {ú}{{\'u}}1
+        {Á}{{\'A}}1
+        {É}{{\'E}}1
+        {Í}{{\'I}}1
+        {Ó}{{\'O}}1
+        {Ú}{{\'U}}1
+        {ñ}{{\~n}}1
+        {Ñ}{{\~N}}1
+}
+
+\lstset{style=mystyle}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{url}
+\usepackage{natbib}
+% --------------------
+% FORMATO DE PÁGINA
+% --------------------
+\geometry{letterpaper, margin=2.5cm}
+\setstretch{1.5}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{Proyecto: Programación y métodos numéricos}
+
+% --------------------
+% FORMATO DE TÍTULOS
+% --------------------
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection.}{1em}{}
+
+% --------------------
+% PORTADA
+% --------------------
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        
+        % Escudo
+        \includegraphics[width=0.3\textwidth]{Escudo_de_la_Universidad_Nacional_de_Colombia.png}
+        
+        \vspace{0.5cm}
+        
+        % Universidad
+        {\Large\textbf{Universidad Nacional de Colombia}}\\[1.5cm]
+        
+        % Título
+        {\Huge\textbf{Impacto de la mutación sobre el equilibrio de Hardy-Weinberg}}\\
+        {\large\textbf{Un estudio aplicado en ratas albinas}}\\[2cm]
+    
+        
+        % Autores
+        {\large Andrés Felipe Mosquera, Gabriela Diaz y David Castro}\\[2cm]
+        
+        % Materia
+        {\large Programación y Metodos Numéricos}\\[1.5cm]
+        
+        % Fecha
+        {\large Julio 2025}
+        
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Introducción}
+
+En este proyecto se plantea la hipótesis de que, al introducir una mutación unidireccional en un sistema biológico regido por el equilibrio de Hardy-Weinberg, la población dejará de conservar dicho equilibrio genético, observándose una desviación progresiva y acumulativa en la frecuencia del alelo recesivo a, producto de la conversión irreversible del alelo dominante A. Esta mutación, con tasa constante \(\mu\), altera directamente las condiciones clásicas del equilibrio.
+
+Se parte del supuesto de una población ideal (sin migración, selección, ni evolución, con apareamiento aleatorio y tamaño suficiente), pero con una única alteración: la presencia de una tasa de mutación unidireccional A → a. Además, la cantidad total de individuos (ratas) evoluciona según un modelo logístico de crecimiento poblacional, condicionado por una tasa de crecimiento r y una capacidad máxima K.
+
+\section{Hipótesis}
+
+Mediante simulación numérica, se observará la evolución de las frecuencias alélicas y del tamaño poblacional. Se espera que:
+
+\begin{itemize}
+  \item La frecuencia del alelo $q(t)$ aumente hasta estabilizarse en un nuevo valor constante.
+  \item La frecuencia del alelo $p(t)$ disminuya progresivamente hacia un valor estable, sin desaparecer.
+  \item Las frecuencias genotípicas $AA$ ($p^2$), $Aa$ ($2pq$) y $aa$ ($q^2$) se estabilicen en nuevas proporciones que cumplan nuevamente la ecuación $p^2 + 2pq + q^2 = 1$.
+  \item Este nuevo equilibrio refleje una estructura genética modificada de la población, mientras que el tamaño total de individuos se estabiliza según el modelo logístico, determinado por las condiciones del laboratorio.
+\end{itemize}
+
+\section{Objetivo}
+
+
+Simular computacionalmente la evolución genética de una población bajo el efecto de una mutación unidireccional y un modelo logístico de crecimiento, con el fin de analizar si, tras un número suficiente de generaciones, se alcanza un nuevo equilibrio de Hardy-Weinberg.
+
+\section{Marco teórico}
+
+\subsection*{Equilibrio de Hardy-Weinberg}
+El equilibrio de Hardy-Weinberg  (Kolmes y Mitchell, 1994) parte de los siguientes supuestos:
+\begin{itemize}
+    \item hombre y mujeres son genéticamente equivalentes.
+    \item Apareamiento aleatorio.
+    \item Sin inmigración ni emigración.
+    \item No existen las mutaciónes.
+    \item No hay evolución.
+    \item Solo aplica para poblaciones suficientemente grandes.
+\end{itemize}
+El equilibrio de Hardy-Weinberg es una deducción matemática partiendo de los supuestos mencionados, para poder calcular las frecuencias alélicas de de una población.
+Se empezará asumiendo que solo hay dos formas alélicas del gen a trabajar, A y a. Ahora diremos que la frecuencia relativa de A esta dada por p y la frecuencia relativa de a esta dada por q, donde \(p+q=1\). La siguiente generación la cual tendrá 3 genotipos por cuadros de Punnet sera:
+\begin{itemize}
+    \item BB Homocigoto dominante, con frecuencia \(p^2\)
+    \item Bb Heterocigoto, con frecuencia \(2pq\)
+    \item bb Homocigoto recesivo, con frecuencia \(q^2\)
+\end{itemize}
+Ya que la suma de las frecuencias relativas debe ser igual a 1, entonces:
+\[
+p^2+2pq+q^2=1
+\]
+La cual es una ecuación cuadrática.
+\subsection*{Ecuación del modelo logístico}
+El modelo logístico (OpenStax, 2016, cap. 4.4) es una ecuación que se utiliza para representar el crecimiento de una poblacion a medida que varía el tiempo. Los factores de crecimiento poblacional que tiene en cuenta el modelo logistico son:
+\begin{itemize}
+    \item La población inicial (\(N_0\))
+    \item Una taza de crecimiento poblacional (\(r\))
+    \item Capacidad máxima en el ambiente (\(K\))
+\end{itemize}
+Entonces, la ecuación diferencial logística es:
+\[
+\frac{dN}{dt} = rN \left(1-\frac{K}{N}\right)
+\]
+Al resolverse, queda una función la cual, en los primeros intervalos de tiempo, la función crece muy rápido, casi exponencialmente. Mientras va llegando a su capacidad máxima(\(K\)), la función comienza a decrecer sin alcanzar la capacidad máxima . 
+
+Esta ecuación diferencial será de mucha ayuda, ya que consideraremos una poblacion de ratas de laboratorio. Si hacemos la suposición de que es un ambiente controlado para que las ratas tengan una capacidad máxima de \(K\) individuos, entonces esta ecuación dara un aproximado bastante acertado sobre el crecimiento población de ratas totales por generación.
+\subsection*{Dinámica de mutación}
+Se considera una población con alelos A y a, que durante generaciones (tiempo) existe una mutación unidireccional que hace que el alelo dominante "A" se convierta en un alelo recesivo "a" a razon de una constante de  que llamaremos $\mu$. Ahora la suposición de Hardy-Weinberg sobre la mutación sera tenida en cuanta, mientras que las demás mencionadas seguirán siendo despreciadas.\\
+Algunos supuestos y definiciones que se darán serán:
+\begin{itemize}
+    \item \(q(t)\) es la frecuencia del alelo recesivo a en el tiempo t.
+    \item \(p(t)\) es la frecuencia del alelo dominante A en el tiempo t. También puede escribirse como:
+    \[
+    p(t) = 1 - q(t) \quad    \text{(Por equilibro Hardy-Weinberg)}
+    \]
+    \item \(\mu\) es la tasa de mutación de \(A \to a\) por unidad de tiempo.
+\end{itemize}
+Dado que el alelo A puede mutar, el cambio de la frecuencia de a esta determinada por la frecuencia de A y la taza de mutación \(\mu\) con la que los alelos dominantes se transforman en recesivos. Entonces, la frecuencia de q es:
+\[
+q(t) = \mu (1-p(t))
+\]
+Por lo tanto, el cambio infinitesimal en la frecuencia de q (\(dq\)) en un intervalo de tiempo \(dt\) esta expresado por:
+\[
+dq = \mu (1 - p(t))dt
+\]
+Reordenando la expresión se obtiene la ecuación diferencial que rige la dinámica de mutación conocida como ecuación de mutación irreversible:
+\[
+\frac{dq}{dt} = \mu(1 - p)
+\]
+Esta ecuación será de mucha ayuda para determinar y establecer la frecuencia de a en cada intervalo de tiempo o de generación.
+
+
+Ya que se hará la suposición de que la población de ratas de laboratorio tendrán  este efecto de mutación irreversible, el modelo que definimos nos ayudara a determinar el numero de ratas albinas (alelo recesivo) de la población en cada generación.
+
+
+\subsection*{Resolución numérica mediante el método de Euler}
+
+En este proyecto se trabaja con dos ecuaciones diferenciales ordinarias (EDOs): una para modelar el crecimiento de la frecuencia del alelo recesivo $q(t)$ debido a la mutación unidireccional $A \rightarrow a$, y otra para describir el crecimiento poblacional mediante un modelo logístico. Dado que estas ecuaciones no se resolverán de forma analítica, se utilizará una aproximación numérica mediante el \textbf{método de Euler}.
+
+El método de Euler es un procedimiento iterativo que permite estimar soluciones aproximadas de EDOs de la forma:
+\[
+\frac{dy}{dt} = f(t, y), \quad y(t_0) = y_0
+\]
+La idea consiste en aproximar el valor de la función $y(t)$ en pequeños pasos de tiempo $\Delta t$ mediante la fórmula:
+\[
+y_{n+1} = y_n + f(t_n, y_n) \cdot \Delta t
+\]
+(Burden y Faires, 2011, p. 256)\\
+Para la frecuencia del alelo recesivo $q(t)$, cuya dinámica está dada por la ecuación:
+\[
+\frac{dq}{dt} = \mu (1 - q) = \mu p
+\]
+aplicamos el método de Euler así:
+\[
+q_{n+1} = q_n + \mu (1 - q_n) \cdot \Delta t
+\]
+
+Para la evolución de la población total $N(t)$ bajo el modelo logístico:
+\[
+\frac{dN}{dt} = rN \left(1 - \frac{N}{K}\right)
+\]
+la aproximación numérica queda:
+\[
+N_{n+1} = N_n + rN_n \left(1 - \frac{N_n}{K} \right) \cdot \Delta t
+\]
+
+Ambas expresiones se implementan computacional-mente mediante un ciclo iterativo que simula el comportamiento del sistema a lo largo de múltiples generaciones. Esta estrategia permite observar la evolución temporal de las variables biológicas involucradas sin necesidad de resolver explícitamente las soluciones exactas de las ecuaciones diferenciales.
+\subsection*{Ratas albinas como fenotipo recesivo}
+
+En el contexto de este proyecto, las ratas albinas representan a los individuos homocigotos recesivos, es decir, aquellos con el genotipo $aa$. Este fenotipo aparece solamente cuando ambos alelos heredados por el individuo son recesivos. En términos de frecuencias, su proporción dentro de la población está dada por $q^2$, de acuerdo con el principio de Hardy-Weinberg.
+
+El albinismo en ratas es una condición fenotípica bien documentada, caracterizada por la ausencia de pigmentación en la piel, ojos y pelaje, debido a una deficiencia en la producción de melanina. Esta condición tiene un valor experimental importante en estudios de genética y medicina, por lo que su análisis poblacional bajo condiciones controladas es altamente relevante.
+
+En este proyecto, se simula una situación en la cual una mutación unidireccional convierte el alelo dominante $A$ en el recesivo $a$ a una tasa constante $\mu$. Esta conversión progresiva impacta directamente la frecuencia del alelo $a$ y, por tanto, también afecta la proporción de ratas albinas ($aa$) en la población.
+
+Dado que la proporción de ratas albinas en una generación está dada por $q^2(t)$, cualquier cambio en la frecuencia alélica $q(t)$ por efecto de la mutación tendrá un impacto cuadrático en la proporción fenotípica. Esto implica que incluso un incremento moderado en $q(t)$ puede traducirse en un aumento significativo en el número de ratas albinas presentes en la población.
+
+Este fenómeno será visualizado mediante simulación computacional, donde se observará cómo, a medida que avanza el tiempo (generaciones), la proporción de individuos albinos se incrementa en respuesta directa al efecto acumulado de la mutación y a la dinámica del crecimiento poblacional.
+
+
+\section{Desarrollo del proyecto}
+
+
+
+Para llevar a cabo este proyecto, se diseñó una simulación computacional en Python (Van Rossum y Drake, 2009) que modela la evolución genética y demográfica de una población de ratas de laboratorio, considerando dos factores principales: una mutación unidireccional que transforma el alelo dominante $A$ en el alelo recesivo $a$, y un crecimiento poblacional regulado por el modelo logístico.
+
+El objetivo es observar cómo cambia la proporción de ratas albinas (genotipo $aa$) a lo largo del tiempo, como consecuencia del aumento progresivo de la frecuencia del alelo recesivo $q(t)$ por efecto de la mutación.
+
+\subsection*{Parámetros del modelo}
+
+\begin{itemize}
+    \item Frecuencia inicial del alelo recesivo: $q(0) = 0.2$
+    \item Tasa de mutación unidireccional: $\mu = 0.01$
+    \item Tamaño inicial de la población: $N(0) = 50$
+    \item Tasa de crecimiento poblacional: $r = 0.2$
+    \item Capacidad máxima del ambiente (K): $K = 500$
+    \item Intervalo de tiempo por paso: $\Delta t = 1$
+    \item Número total de generaciones: $T = 100$
+\end{itemize}
+\begin{lstlisting}[language=Python, caption=Simulación de evolución genética con mutación unidireccional: Parámetros iniciales]
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Tiempo de simulación
+generaciones = 100
+dt = 1
+
+# Frecuencias iniciales
+q = 0.2
+p = 1 - q
+
+# Parámetros de mutación
+mu = 0.01
+
+# Parámetros del modelo logístico
+N0 = 50
+K = 500
+r = 0.2
+
+t_values = np.arange(0, generaciones, dt)
+p_values = []
+q_values = []
+N_values = []
+AA_values = []
+Aa_values = []
+aa_values = []
+n_aa_values = []
+\end{lstlisting}
+
+\subsection*{Implementación computacional}
+
+El sistema fue simulado utilizando el método de Euler para aproximar las soluciones de las siguientes ecuaciones diferenciales:
+
+\begin{itemize}
+    \item Para la mutación unidireccional: \(\displaystyle \frac{dq}{dt} = \mu (1 - q)\)
+    \item Para el crecimiento poblacional: \(\displaystyle \frac{dN}{dt} = rN\left(1 - \frac{N}{K}\right)\)
+\end{itemize}
+
+Además, se calcularon las frecuencias genotípicas:
+\begin{itemize}
+    \item $AA = p^2$
+    \item $Aa = 2pq$
+    \item $aa = q^2$
+\end{itemize}
+
+Y se estimó la cantidad de ratas albinas como \(n_{aa} = N \cdot q^2\).
+\begin{lstlisting}[language=Python, caption={Simulación de evolución genética con mutación unidireccional: Calculos de frecuencias, mutaciónes y crecimiento poblacional}]
+N = N0
+for t in t_values:
+    p_values.append(p)
+    q_values.append(q)
+    N_values.append(N)
+    # Calcular frecuencias genotípicas
+    AA = p**2
+    Aa = 2 * p * q
+    aa = q**2
+
+    AA_values.append(AA)
+    Aa_values.append(Aa)
+    aa_values.append(aa)
+    n_aa = N * aa
+    n_aa_values.append(n_aa)
+    # Mutación: dq/dt = mu * p
+    dq = mu * p * dt
+    q += dq
+    q = min(q, 1)
+    p = 1 - q
+    # Crecimiento poblacional
+    dN = r * N * (1 - N / K) * dt
+    N += dN
+\end{lstlisting}
+
+
+\subsection*{Resultados iniciales y finales}
+
+Los resultados de la simulación para la primera generación fueron:
+
+\begin{itemize}
+    \item Frecuencia de $q$: 0.20
+    \item Frecuencia de $p$: 0.80
+    \item Frecuencia genotípica $AA$: 0.64
+    \item Frecuencia genotípica $Aa$: 0.32
+    \item Frecuencia genotípica $aa$: 0.04
+\end{itemize}
+
+Y luego de 100 generaciones se obtuvieron los siguientes resultados:
+
+\begin{itemize}
+    \item Frecuencia de $q$: 0.7042
+    \item Frecuencia de $p$: 0.2958
+    \item Frecuencia genotípica $AA$: 0.0875
+    \item Frecuencia genotípica $Aa$: 0.4166
+    \item Frecuencia genotípica $aa$: 0.4959
+\end{itemize}
+
+Esto significa que casi el 50\% de la población de ratas son albinas después de 100 generaciones, mostrando un claro impacto de la mutación unidireccional sobre la estructura genética de la población.
+
+\subsection*{Visualización de resultados}
+A traves del codigo de Python  y la libreria de matplotlib (Hunter, 2007) se lograron generar las siguientes graficas:
+
+\begin{lstlisting}[language=Python, caption={Simulación de evolución genética con mutación unidireccional: Visualización de graficos}]
+# FIgura 1
+plt.figure(figsize=(10, 5))
+plt.plot(t_values, p_values, label='Frecuencia p (A)', color='blue')
+plt.plot(t_values, q_values, label='Frecuencia q (a)', color='red')
+plt.title('Evolución de frecuencias alélicas con mutación unidireccional')
+plt.xlabel('Generaciones')
+plt.ylabel('Frecuencia')
+plt.legend()
+plt.grid()
+
+# Figura 2
+plt.figure(figsize=(10, 5))
+plt.plot(t_values, N_values, label='Población total N(t)', color='green')
+plt.plot(t_values, n_aa_values, label='Cantidad de individuos aa', color='darkred')
+plt.title('Población total y número de albinos (aa)')
+plt.xlabel('Generaciones')
+plt.ylabel('Número de individuos')
+plt.legend()
+plt.grid()
+plt.tight_layout()
+plt.show()
+
+# Figura 3
+plt.figure(figsize=(10, 5))
+plt.plot(t_values, AA_values, label='AA (p2)', linestyle='--')
+plt.plot(t_values, Aa_values, label='Aa (2pq)', linestyle='-.')
+plt.plot(t_values, aa_values, label='aa (q2)', linestyle='-')
+plt.title('Frecuencias genotípicas en el tiempo')
+plt.xlabel('Generaciones')
+plt.ylabel('Frecuencia')
+plt.legend()
+plt.grid()
+plt.show()
+\end{lstlisting}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{descargar.png}
+    \caption{Evolución de las frecuencias alélicas con mutación unidireccional durante 100 generaciones.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{numero2.png}
+    \caption{Crecimiento total de la población y número de individuos albinos (aa) a lo largo del tiempo.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{numero3.png}
+    \caption{Evolución de las frecuencias genotípicas $AA$, $Aa$ y $aa$ durante 100 generaciones.}
+\end{figure}
+
+\section{Análisis de resultados}
+
+Los resultados obtenidos a través de la simulación permiten verificar de forma clara los efectos de una mutación unidireccional $A \rightarrow a$ sobre una población ideal de ratas de laboratorio, en la que inicialmente se cumplen las condiciones del equilibrio de Hardy-Weinberg.
+
+\subsection*{Evolución de las frecuencias alélicas}
+
+La Figura 1 muestra cómo la frecuencia del alelo recesivo $q(t)$ aumenta de forma progresiva a lo largo de las generaciones, mientras que la frecuencia del alelo dominante $p(t)$ disminuye correspondientemente. Esta tendencia es coherente con la ecuación diferencial utilizada: \(\frac{dq}{dt} = \mu(1 - q)\), ya que la mutación convierte constantemente alelos $A$ en alelos $a$, y no existe el proceso inverso.
+
+Tras 100 generaciones, se observa que $q(t)$ se aproxima a un valor cercano a 0.70, mientras que $p(t)$ disminuye a 0.29. Este comportamiento sugiere que, a pesar de que la mutación modifica el equilibrio original, el sistema tiende a estabilizarse en un nuevo estado de equilibrio con frecuencias alélicas distintas.
+
+\subsection*{Crecimiento poblacional y número de ratas albinas}
+
+La Figura 2 muestra el comportamiento de la población total $N(t)$ según el modelo logístico, partiendo de 50 individuos y creciendo hasta estabilizarse cerca del valor límite $K = 500$. Este comportamiento concuerda con la ecuación diferencial logística implementada y refleja el efecto del ambiente limitado en el crecimiento.
+
+En la misma gráfica, se observa el número de individuos albinos (genotipo $aa$), calculado como $q^2(t) \cdot N(t)$. Inicialmente, la proporción de ratas albinas es baja (alrededor del 4\%), pero aumenta de forma significativa a lo largo del tiempo, alcanzando un valor cercano al 50\% al final de la simulación. Este incremento es consecuencia directa del aumento de $q(t)$ y la expansión demográfica de la población.
+
+\subsection*{Frecuencias genotípicas}
+
+En la Figura 3 se muestra la evolución de las frecuencias genotípicas: $AA$, $Aa$ y $aa$. Se puede observar que la frecuencia del genotipo recesivo $aa$ se incrementa notablemente a lo largo del tiempo, mientras que $AA$ disminuye considerablemente. La frecuencia del heterocigoto $Aa$ alcanza su valor máximo en la mitad del proceso y luego decrece ligeramente, lo cual es consistente con la dinámica alélica en una población donde $p$ disminuye constantemente.
+
+Es importante resaltar que, aunque el equilibrio original de Hardy-Weinberg se pierde por la presencia de mutación, las frecuencias genotípicas siguen cumpliendo la relación:
+
+\[
+p^2 + 2pq + q^2 = 1
+\]
+
+en cada generación, lo que indica que se mantiene la distribución binomial esperada a partir de las frecuencias alélicas, pero con valores alterados por la mutación.
+
+\subsection*{Interpretación biológica}
+En un contexto biológico real, fenómenos similares podrían explicar el incremento de rasgos recesivos (como el albinismo) en poblaciones aisladas o en condiciones experimentales controladas, donde ciertas presiones selectivas son atenuadas o inexistentes.
+Asimismo, este tipo de simulaciones permite explorar dinámicas evolutivas a escalas temporales difíciles de observar directamente, y pueden servir como base para estudios más complejos sobre mutaciónes, selección natural, deriva genética o intervención genética en poblaciones. En biomedicina y genética experimental, entender la acumulación de alelos recesivos puede tener aplicaciones en el manejo de enfermedades genéticas, programas de conservación o modificación genética controlada.\\
+
+\section{Conclusiones}
+\begin{itemize}
+    \item La frecuencia del alelo recesivo $q(t)$ aumenta con el tiempo debido a la conversión constante de alelos dominantes $A$ en recesivos $a$ acercándose  asintóticamente a un valor de saturación determinado por la tasa de mutación $\mu$.
+    \item La frecuencia del alelo dominante $p(t)$ disminuye de manera complementaria a $q(t)$, sin llegar a desaparecer completamente, lo que evita una fijación total del alelo recesivo.
+    \item Las frecuencias genotípicas $p^{2},2pq$ y $q^{2}$ se ajustan a las nuevas proporciones alélicas en cada generación, manteniéndose la validez de la identidad $p^2+2pq+q^2=1$, lo que sugiere que la estructura binomial del modelo de Hardy-Weinberg sigue vigente bajo mutación.
+    \item El número absoluto de ratas albinas (genotipo $aa$)  aumenta significativamente, pasando de ser una minoría a representar cerca del $50\%$ de la población tras 100 generaciones. Este crecimiento es consecuencia directa del aumento de $q^2(t)$ impulsado por la mutación unidireccional y el crecimiento poblacional. Aunque no se alcanza el $100\%$, la tendencia sugiere una estabilización progresiva hacia valores aún mayores en generaciones futuras.
+    \end{itemize}
+Este experimento computacional demuestra cómo incluso una mutación simple y constante puede tener un impacto sustancial en la composición genética y fenotípica de una población, y cómo el equilibrio de Hardy-Weinberg puede ser modificado pero no completamente invalidado, adaptándose a las nuevas condiciones evolutivas impuestas por la mutación.\\
+
+\begin{thebibliography}{9}
+
+\bibitem[Albino Rat (n.d.)]{albino}
+\textit{Albino Rat - an overview}. (s.f.) ScienceDirect Topics: Immunology and Microbiology. Disponible en: \url{https://www.sciencedirect.com/topics/immunology-and-microbiology/albino-rat} (Consultado: 16 julio 2025).
+
+\bibitem[Burden y Faires(2011)]{burden}
+Burden, R.L. y Faires, J.D. (2011) `Método de Euler', en \textit{Análisis numérico}. 7ª ed. Ciudad de México: Cengage Learning, pp. 256-260.
+
+\bibitem[Charles River(n.d.)]{charles}
+Charles River Laboratories (s.f.) \textit{Laboratory Rats - research models \& services}. Disponible en: \url{https://www.criver.com/products-services/research-models-services/animal-models/rats} (Consultado: 18 julio 2025).
+
+\bibitem[Harris et al.(2020)]{harris}
+Harris, C.R. et al. (2020) ``Array programming with NumPy'', \textit{Nature}, 585(7825), pp. 357-362. DOI: 10.1038/s41586-020-2649-2.
+
+\bibitem[Hunter(2007)]{hunter}
+Hunter, J.D. (2007) ``Matplotlib: A 2D Graphics Environment'', \textit{Computing in Science \& Engineering}, 9(3), pp. 90-95. DOI: 10.1109/MCSE.2007.55.
+
+\bibitem[Kolmes y Mitchell(1994)]{kolmes}
+Kolmes, S. y Mitchell, K. (1994) \textit{The Hardy-Weinberg Equilibrium}. En P. J. Campbell (Ed.), \textit{UMAP Modules: Tools for Teaching 1993} (pp. 171-208). Lexington, MA: COMAP.
+
+\bibitem[OpenStax(2016)]{openstax}
+OpenStax (2016) \textit{Cálculo volumen 2}. [En línea]. Disponible en: \url{https://openstax.org/books/cálculo-volumen-2/pages/4-4-la-ecuacion-logistica} (Consultado: 9 julio 2025).
+
+\bibitem[Van Rossum y Drake(2009)]{python}
+Van Rossum, G. y Drake, F.L. (2009) \textit{Python 3 Reference Manual}. Scotts Valley, CA: CreateSpace.
+
+\end{thebibliography}
+\end{document}
